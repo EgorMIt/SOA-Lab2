@@ -1,12 +1,11 @@
 package ru.egormit.library;
 
-import ru.egormit.library.enums.AstartesCategory;
-import ru.egormit.library.enums.MeleeWeapon;
-import ru.egormit.library.enums.Weapon;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import ru.egormit.library.enums.AstartesCategory;
+import ru.egormit.library.enums.MeleeWeapon;
+import ru.egormit.library.enums.Weapon;
 
 import java.time.ZonedDateTime;
 
