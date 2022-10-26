@@ -5,12 +5,16 @@ import feign.Response;
 import feign.codec.ErrorDecoder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
+import ru.egormit.library.ErrorResponse;
 import ru.egormit.service2.error.ApplicationException;
-import ru.egormit.service2.error.model.ApplicationError;
 
 import java.io.IOException;
 
+/**
+ * Декодер кастомных ошибок.
+ *
+ * @author Egor Mitrofanov.
+ */
 @RequiredArgsConstructor
 @Slf4j
 public class CustomErrorDecoder implements ErrorDecoder {
@@ -28,14 +32,14 @@ public class CustomErrorDecoder implements ErrorDecoder {
         } catch (IOException ioe) {
             body = "";
         }
-        ApplicationError error;
+        ErrorResponse error;
         try {
-            error = objectMapper.readValue(body, ApplicationError.class);
+            error = objectMapper.readValue(body, ErrorResponse.class);
         } catch (Exception e) {
             log.error("the error occurred while decoding response body", e);
-            error = new ApplicationError(
-                    "Неизвестная ошибка сервера",
-                    HttpStatus.valueOf(response.status())
+            error = ErrorResponse.of(
+                    response.status(),
+                    "Неизвестная ошибка сервера"
             );
         }
         return new ApplicationException(error);

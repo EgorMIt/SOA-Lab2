@@ -3,7 +3,7 @@ package ru.egormit.service2.error;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import ru.egormit.service2.error.model.ApplicationError;
+import ru.egormit.library.ErrorResponse;
 
 /**
  * Ошибки с комментариями.
@@ -13,15 +13,10 @@ import ru.egormit.service2.error.model.ApplicationError;
 @Getter
 @RequiredArgsConstructor
 public enum ErrorDescriptions {
-    HANDLER_NOT_FOUND("HANDLER_NOT_FOUND", "Не найден обработчик", HttpStatus.NOT_FOUND),
-    SPACEMACS_IS_BUSY("SPACEMACS_IS_BUSY", "Этот космодесантник уже на другом корабле", HttpStatus.BAD_REQUEST),
-    STARSHIP_IS_EMPTY("STARSHIP_IS_EMPTY", "Этот космический корабль уже пустой", HttpStatus.BAD_REQUEST),
-    STARSHIP_NOT_FOUND("STARSHIP_IS_EMPTY", "Этот космический корабль уже пустой", HttpStatus.NOT_FOUND);
-
-    /**
-     * Код ошибки.
-     */
-    private final String code;
+    HANDLER_NOT_FOUND("Не найден обработчик", HttpStatus.NOT_FOUND),
+    SPACEMACS_IS_BUSY("Этот космодесантник уже на другом корабле", HttpStatus.BAD_REQUEST),
+    STARSHIP_IS_EMPTY("Этот космический корабль уже пустой", HttpStatus.BAD_REQUEST),
+    STARSHIP_NOT_FOUND("Этот космический корабль уже пустой", HttpStatus.NOT_FOUND);
 
     /**
      * Сообщение ошибки.
@@ -75,8 +70,8 @@ public enum ErrorDescriptions {
         }
     }
 
-    public ApplicationError applicationError() {
-        return new ApplicationError(this.message, this.status);
+    public ErrorResponse applicationError() {
+        return ErrorResponse.of(this.status.value(), this.message);
     }
 
 

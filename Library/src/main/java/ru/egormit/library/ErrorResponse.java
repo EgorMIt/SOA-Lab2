@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "of")
-public class Error {
+public class ErrorResponse {
 
     /**
      * Код ошибки.
      */
-    private String code;
+    private Integer code;
 
     /**
      * Сообщение об ошибке.

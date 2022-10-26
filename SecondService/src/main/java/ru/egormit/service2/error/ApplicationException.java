@@ -1,16 +1,24 @@
 package ru.egormit.service2.error;
 
 import lombok.Getter;
-import ru.egormit.service2.error.model.ApplicationError;
+import ru.egormit.library.ErrorResponse;
 
+/**
+ * Кастомные исключения.
+ *
+ * @author Egor Mitrofanov.
+ */
 @Getter
 public class ApplicationException extends RuntimeException {
 
-    private final ApplicationError error;
+    /**
+     * {@link ErrorResponse}, ошибка, возвращаемая на фронт.
+     */
+    private final ErrorResponse errorResponse;
 
-    public ApplicationException(ApplicationError error) {
-        super(error.getMessage());
-        this.error = error;
+    public ApplicationException(ErrorResponse errorResponse) {
+        super(errorResponse.getMessage());
+        this.errorResponse = errorResponse;
     }
 
 }

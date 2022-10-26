@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import ru.egormit.library.SpaceMarineResponse;
 
 /**
- * Запросы к певрому сервису.
+ * Запросы к первому сервису.
  *
  * @author Egor Mitrofanov.
  */
@@ -25,7 +25,7 @@ public interface FirstService {
     SpaceMarineResponse getSpacemarine(@PathVariable Long id);
 
     /**
-     * Получение Spacemarine
+     * Изменение Spacemarine
      *
      * @param id             идентификатор
      * @param spaceMarineDto новая модель

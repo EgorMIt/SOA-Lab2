@@ -4,13 +4,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.ResponseErrorHandler;
+import ru.egormit.library.ErrorResponse;
 import ru.egormit.service2.error.ApplicationException;
-import ru.egormit.service2.error.model.ApplicationError;
 
 import java.io.IOException;
 
+/**
+ * Обработчик ошибок.
+ *
+ * @author Egor Mitrofanov.
+ */
 @RequiredArgsConstructor
 public class ErrorHandler implements ResponseErrorHandler {
+
     private final ObjectMapper objectMapper;
 
     @Override
@@ -20,7 +26,8 @@ public class ErrorHandler implements ResponseErrorHandler {
 
     @Override
     public void handleError(ClientHttpResponse response) throws IOException {
-        ApplicationError error = objectMapper.readValue(response.getBody(), ApplicationError.class);
+        ErrorResponse error = objectMapper.readValue(response.getBody(), ErrorResponse.class);
         throw new ApplicationException(error);
     }
+
 }

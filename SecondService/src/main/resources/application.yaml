@@ -15,10 +15,12 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 
+#Параметры запуска
 server:
   port: 80
   address: 0.0.0.0
 
+#Параметры первого сервиса
 service:
   first-service:
     timeout: 30000

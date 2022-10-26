@@ -2,9 +2,9 @@ package ru.egormit.service2.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import ru.egormit.service2.domain.enums.AstartesCategory;
-import ru.egormit.service2.domain.enums.MeleeWeapon;
-import ru.egormit.service2.domain.enums.Weapon;
+import ru.egormit.library.enums.AstartesCategory;
+import ru.egormit.library.enums.MeleeWeapon;
+import ru.egormit.library.enums.Weapon;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

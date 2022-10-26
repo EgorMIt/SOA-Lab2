@@ -65,9 +65,9 @@ public class FirstServiceConfiguration {
      * @return {@link RestTemplate}.
      */
     @Bean
-    @Qualifier("ServiceOneRestTemplate")
-    @ConditionalOnMissingBean(name = "ServiceOneRestTemplate")
-    public RestTemplate serviceOneRestTemplate(ObjectMapper objectMapper, @Qualifier("serviceErrorHandler")
+    @Qualifier("FirstServiceRestTemplate")
+    @ConditionalOnMissingBean(name = "FirstServiceRestTemplate")
+    public RestTemplate firstServiceRestTemplate(ObjectMapper objectMapper, @Qualifier("serviceErrorHandler")
     ErrorHandler errorHandler) {
         SimpleClientHttpRequestFactory clientHttpRequestFactory = new SimpleClientHttpRequestFactory();
         clientHttpRequestFactory.setConnectTimeout(properties.getTimeout());
@@ -83,7 +83,7 @@ public class FirstServiceConfiguration {
     }
 
     @Bean
-    public FirstService serviceOne() {
+    public FirstService firstService() {
         return Feign.builder().client(client)
                 .encoder(encoder)
                 .decoder(decoder)

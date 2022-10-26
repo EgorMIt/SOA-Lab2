@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SoaLab2Service2Application {
+public class SecondServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SoaLab2Service2Application.class, args);
+        SpringApplication.run(SecondServiceApplication.class, args);
     }
 
 }
