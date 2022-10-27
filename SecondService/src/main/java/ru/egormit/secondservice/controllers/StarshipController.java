@@ -46,7 +46,7 @@ public class StarshipController {
      *
      * @return список кораблей.
      */
-    @GetMapping(value = Endpoints.GET_STARSHIPS)
+    @GetMapping(value = Endpoints.GET_ALL_STARSHIPS)
     public ResponseEntity<List<StarShipDto>> deleteChapter() {
         return new ResponseEntity<>(starshipService.getAllStarships(), HttpStatus.OK);
     }
@@ -74,6 +74,5 @@ public class StarshipController {
         starshipService.cleanStarship(id);
         return ResponseEntity.ok().build();
     }
-
 
 }

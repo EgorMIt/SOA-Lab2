@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Модель страницы.
+ * Модель страничного запроса.
  *
  * @author Egor Mitrofanov.
  */

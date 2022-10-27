@@ -44,7 +44,7 @@ public class StarshipServiceImpl implements StarshipService {
     private final ModelMapper modelMapper;
 
     /**
-     * Создане корабля
+     * Создание корабля
      *
      * @param request модель корабля
      */
@@ -109,4 +109,5 @@ public class StarshipServiceImpl implements StarshipService {
             firstService.updateSpacemarine(spaceMarineDto.getId(), spaceMarineDto);
         }
     }
+
 }

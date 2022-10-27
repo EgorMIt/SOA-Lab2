@@ -8,7 +8,7 @@ import ru.egormit.library.enums.MeleeWeapon;
 import ru.egormit.library.enums.Weapon;
 
 /**
- * Модель создания Space Marine.
+ * Модель запроса на создание Space Marine.
  *
  * @author Egor Mitrofanov.
  */
@@ -51,6 +51,5 @@ public class SpaceMarineCreateRequest {
      * Тип оружия ближнего боя.
      */
     private MeleeWeapon meleeWeapon;
-
 
 }

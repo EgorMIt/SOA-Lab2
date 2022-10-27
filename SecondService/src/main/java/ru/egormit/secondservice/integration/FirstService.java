@@ -16,7 +16,7 @@ import ru.egormit.library.SpaceMarineResponse;
 public interface FirstService {
 
     /**
-     * Получение Spacemarine
+     * Получение Spacemarine по ID
      *
      * @param id идентификатор
      * @return модель Spacemarine
@@ -25,7 +25,7 @@ public interface FirstService {
     SpaceMarineResponse getSpacemarine(@PathVariable Long id);
 
     /**
-     * Изменение Spacemarine
+     * Изменение Spacemarine по ID
      *
      * @param id             идентификатор
      * @param spaceMarineDto новая модель

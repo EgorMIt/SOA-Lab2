@@ -15,13 +15,13 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 
-#Параметры запуска
+#Параметры запуска второго сервиса
 server:
-  port: 80
+  port: 8080
   address: 0.0.0.0
 
 #Параметры первого сервиса
 service:
   first-service:
     timeout: 30000
-    url: https://localhost:10551/api/v1
+    url: https://localhost:10500

@@ -1,6 +1,5 @@
 package ru.egormit.secondservice.service;
 
-
 import ru.egormit.library.StarShipDto;
 import ru.egormit.library.StarShipRequest;
 
@@ -14,7 +13,7 @@ import java.util.List;
 public interface StarshipService {
 
     /**
-     * Создане корабля
+     * Создание корабля
      *
      * @param request модель корабля
      */

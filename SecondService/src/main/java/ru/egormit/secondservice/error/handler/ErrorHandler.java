@@ -10,7 +10,7 @@ import ru.egormit.secondservice.error.ApplicationException;
 import java.io.IOException;
 
 /**
- * Обработчик ошибок.
+ * Обработчик ошибок из первого сервиса.
  *
  * @author Egor Mitrofanov.
  */

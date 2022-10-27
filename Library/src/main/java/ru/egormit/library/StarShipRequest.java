@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Модель запрса на саоздание.
+ * Модель запрса на саоздание Starship.
  *
  * @author Egor Mitrofanov.
  */
@@ -20,7 +20,7 @@ public class StarShipRequest {
     private String name;
 
     /**
-     * Флотн.
+     * Флот.
      */
     private String fleet;
 
