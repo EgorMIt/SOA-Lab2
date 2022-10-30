@@ -6,7 +6,9 @@ import ru.egormit.library.enums.MeleeWeapon;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.Tuple;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ public class SpaceMarineGroupRepository {
     @Inject
     private EntityManagerProvider entityManagerProvider;
 
-    public Map<MeleeWeapon, Long> groupByMeleeAndCount(){
+    public Map<MeleeWeapon, Long> groupByMeleeAndCount() {
         CriteriaBuilder builder = entityManagerProvider.getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Tuple> query = builder.createQuery(Tuple.class);
         Root<SpaceMarine> root = query.from(SpaceMarine.class);

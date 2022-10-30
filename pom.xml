@@ -8,7 +8,7 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>SecondService</module>
+    <module>StarshipService</module>
     <module>Library</module>
     <module>MarineService</module>
   </modules>

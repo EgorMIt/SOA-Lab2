@@ -2,7 +2,11 @@ package com.ervelus.marineservice.service.impl;
 
 import com.ervelus.marineservice.repository.SpaceMarineSearchRepository;
 import com.ervelus.marineservice.service.SpaceMarineSearchService;
-import ru.egormit.library.*;
+import ru.egormit.library.Coordinates;
+import ru.egormit.library.SpaceMarine;
+import ru.egormit.library.SpaceMarineFilterRequest;
+import ru.egormit.library.SpaceMarineResponse;
+import ru.egormit.library.SpaceMarineSearchResponse;
 import ru.egormit.library.enums.SortByType;
 import ru.egormit.library.enums.SortOrder;
 
@@ -21,7 +25,7 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
     public SpaceMarineSearchResponse findAllSpaceMarineByFilter(SpaceMarineFilterRequest request) {
         HashMap<String, String> fieldToVal = new HashMap<>();
         if (request.getName() != null) fieldToVal.put("name", request.getName());
-        if (request.getCoordinates() != null){
+        if (request.getCoordinates() != null) {
             fieldToVal.put("coordinate_x", request.getCoordinates().getX().toString());
             fieldToVal.put("coordinate_y", request.getCoordinates().getY().toString());
         }
@@ -38,9 +42,9 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
                     SortOrder.valueOf(request.getOrder().toUpperCase()),
                     request.getPage(),
                     request.getLimit()));
-        }else marines = repository.getAllMatchingFieldsPageable(fieldToVal, request.getPage(), request.getLimit());
+        } else marines = repository.getAllMatchingFieldsPageable(fieldToVal, request.getPage(), request.getLimit());
         List<SpaceMarineResponse> responseList = new ArrayList<>();
-        for (SpaceMarine marine: marines) {
+        for (SpaceMarine marine : marines) {
             SpaceMarineResponse marineResponse = new SpaceMarineResponse();
             marineResponse.setId(marine.getId());
             marineResponse.setName(marine.getName());
@@ -60,7 +64,7 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
     public SpaceMarineSearchResponse findAllSpaceMarineByName(SpaceMarineFilterRequest request) {
         List<SpaceMarine> marines = repository.getAllByNamePageable(request.getName(), request.getPage(), request.getLimit());
         List<SpaceMarineResponse> responseList = new ArrayList<>();
-        for (SpaceMarine marine: marines) {
+        for (SpaceMarine marine : marines) {
             SpaceMarineResponse marineResponse = new SpaceMarineResponse();
             marineResponse.setId(marine.getId());
             marineResponse.setName(marine.getName());
@@ -80,7 +84,7 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
     public SpaceMarineSearchResponse findAllSpaceMarineWithHealthGreaterThan(SpaceMarineFilterRequest request) {
         List<SpaceMarine> marines = repository.getAllByHealthGreaterPageable(request.getHealth(), request.getPage(), request.getLimit());
         List<SpaceMarineResponse> responseList = new ArrayList<>();
-        for (SpaceMarine marine: marines) {
+        for (SpaceMarine marine : marines) {
             SpaceMarineResponse marineResponse = new SpaceMarineResponse();
             marineResponse.setId(marine.getId());
             marineResponse.setName(marine.getName());

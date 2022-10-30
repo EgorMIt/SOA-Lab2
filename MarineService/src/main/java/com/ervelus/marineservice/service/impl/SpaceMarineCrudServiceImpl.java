@@ -2,7 +2,12 @@ package com.ervelus.marineservice.service.impl;
 
 import com.ervelus.marineservice.repository.SpaceMarineCrudRepository;
 import com.ervelus.marineservice.service.SpaceMarineCrudService;
-import ru.egormit.library.*;
+import ru.egormit.library.Coordinates;
+import ru.egormit.library.PageDto;
+import ru.egormit.library.SpaceMarine;
+import ru.egormit.library.SpaceMarineCreateRequest;
+import ru.egormit.library.SpaceMarineResponse;
+import ru.egormit.library.SpaceMarineSearchResponse;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -44,7 +49,7 @@ public class SpaceMarineCrudServiceImpl implements SpaceMarineCrudService {
     public SpaceMarineSearchResponse getAllSpaceMarines(PageDto pageDto) {
         List<SpaceMarine> marines = repository.getAllPageable(pageDto.getPage(), pageDto.getLimit());
         List<SpaceMarineResponse> responseList = new ArrayList<>();
-        for (SpaceMarine marine: marines) {
+        for (SpaceMarine marine : marines) {
             SpaceMarineResponse marineResponse = new SpaceMarineResponse();
             marineResponse.setId(marine.getId());
             marineResponse.setName(marine.getName());
