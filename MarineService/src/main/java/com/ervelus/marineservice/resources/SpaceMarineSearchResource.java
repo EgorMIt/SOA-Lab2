@@ -16,22 +16,22 @@ public class SpaceMarineSearchResource {
     private SpaceMarineSearchService searchService;
 
     @POST
-    @Consumes("text/json")
-    @Produces("text/json")
+    @Consumes("application/json")
+    @Produces("application/json")
     public Response filterSpaceMarine(SpaceMarineFilterRequest request) {
         return Response.ok().entity(searchService.findAllSpaceMarineByFilter(request)).build();
     }
 
     @POST
     @Path("/name")
-    @Produces("text/json")
+    @Produces("application/json")
     public Response getSpaceMarinesByName(SpaceMarineFilterRequest request) {
         return Response.ok().entity(searchService.findAllSpaceMarineByName(request)).build();
     }
 
     @POST
     @Path("/health/greater")
-    @Produces("text/json")
+    @Produces("application/json")
     public Response getSpaceMarinesWithHealthGreaterThan(SpaceMarineFilterRequest request) {
         return Response.ok().entity(searchService.findAllSpaceMarineWithHealthGreaterThan(request)).build();
     }

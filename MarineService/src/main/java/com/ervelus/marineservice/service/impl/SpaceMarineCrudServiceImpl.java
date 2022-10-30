@@ -35,10 +35,10 @@ public class SpaceMarineCrudServiceImpl implements SpaceMarineCrudService {
     }
 
     @Override
-    public void updateSpaceMarine(Long id, SpaceMarineCreateRequest request) {
+    public void updateSpaceMarine(Long id, SpaceMarineResponse request) {
         SpaceMarine spaceMarine = repository.getById(id);
         if (spaceMarine == null) throw new NotFoundException();
-        repository.save(converter.createRequestToEntity(request, spaceMarine));
+        repository.save(converter.updateRequestToEntity(request, spaceMarine));
     }
 
     @Override

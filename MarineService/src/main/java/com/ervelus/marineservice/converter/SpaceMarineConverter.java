@@ -33,4 +33,16 @@ public class SpaceMarineConverter {
         spaceMarine.setMeleeWeapon(request.getMeleeWeapon());
         return spaceMarine;
     }
+
+    public SpaceMarine updateRequestToEntity(SpaceMarineResponse request, SpaceMarine spaceMarine){
+        spaceMarine.setName(request.getName());
+        spaceMarine.setCoordinateX(request.getCoordinates().getX());
+        spaceMarine.setCoordinateY(request.getCoordinates().getY());
+        spaceMarine.setHealth(request.getHealth());
+        spaceMarine.setCategory(request.getCategory());
+        spaceMarine.setWeaponType(request.getWeaponType());
+        spaceMarine.setMeleeWeapon(request.getMeleeWeapon());
+        //spaceMarine.setStarShip(request.getStarShipId());
+        return spaceMarine;
+    }
 }

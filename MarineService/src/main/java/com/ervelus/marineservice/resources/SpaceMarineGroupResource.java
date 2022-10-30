@@ -15,7 +15,7 @@ public class SpaceMarineGroupResource {
 
     @POST
     @Path("/melee")
-    @Produces("text/json")
+    @Produces("application/json")
     public Response getNumberOfSpaceMarinesWithEachMeleeType() {
         return Response.ok().entity(groupService.groupSpaceMarinesByMeleeWeaponAndCount()).build();
     }

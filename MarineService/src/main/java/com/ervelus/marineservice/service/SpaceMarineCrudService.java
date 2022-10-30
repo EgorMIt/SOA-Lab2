@@ -11,7 +11,7 @@ import javax.ejb.Local;
 public interface SpaceMarineCrudService {
     void createSpaceMarine(SpaceMarineCreateRequest request);
 
-    void updateSpaceMarine(Long id, SpaceMarineCreateRequest request);
+    void updateSpaceMarine(Long id, SpaceMarineResponse request);
 
     SpaceMarineSearchResponse getAllSpaceMarines(PageDto pageDto);
 

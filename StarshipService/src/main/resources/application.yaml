@@ -3,12 +3,12 @@ spring:
     name: SOA-Lab2-Service2
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: 1234
+    url: jdbc:postgresql://localhost:5432/studs
+    username: s285583
+    password: 9XYH7oQaL91RZfQh
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database: POSTGRESQL
   sql:
     init:
@@ -27,10 +27,10 @@ feign:
 
 #Параметры запуска второго сервиса
 server:
-  port: 8080
+  port: 8081
 
 #Параметры первого сервиса
 service:
   first-service:
     timeout: 30000
-    url: http://localhost:10500
+    url: http://localhost:8080
