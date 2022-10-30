@@ -8,6 +8,8 @@ import javax.ejb.Local;
 @Local
 public interface SpaceMarineSearchService {
     SpaceMarineSearchResponse findAllSpaceMarineByFilter(SpaceMarineFilterRequest request);
+
     SpaceMarineSearchResponse findAllSpaceMarineByName(SpaceMarineFilterRequest request);
+
     SpaceMarineSearchResponse findAllSpaceMarineWithHealthGreaterThan(SpaceMarineFilterRequest request);
 }
