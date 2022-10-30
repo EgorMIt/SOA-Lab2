@@ -19,9 +19,12 @@ public class SpaceMarineGroupRepository {
         CriteriaBuilder builder = entityManagerProvider.getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Tuple> query = builder.createQuery(Tuple.class);
         Root<SpaceMarine> root = query.from(SpaceMarine.class);
-        query.groupBy(root.get("melee_weapon"));
-        query.multiselect(root.get("melee_weapon"), builder.count(root));
+        query.groupBy(root.get("meleeWeapon"));
+        query.multiselect(root.get("meleeWeapon"), builder.count(root));
         Map<MeleeWeapon, Long> result = new HashMap<>();
+        result.put(MeleeWeapon.POWER_FIST, 0L);
+        result.put(MeleeWeapon.CHAIN_SWORD, 0L);
+        result.put(MeleeWeapon.CHAIN_AXE, 0L);
         entityManagerProvider.getEntityManager().createQuery(query).getResultStream().forEach((item) ->
                 result.put((MeleeWeapon) item.get(0), (Long) item.get(1)));
         return result;

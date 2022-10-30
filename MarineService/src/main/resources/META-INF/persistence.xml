@@ -3,7 +3,12 @@
     <persistence-unit name="SpaceMarine">
         <class>ru.egormit.library.SpaceMarine</class>
         <class>ru.egormit.library.StarShip</class>
+        <jta-data-source>java:/PostgresDS</jta-data-source>
         <properties>
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/studs"/>-->
+<!--            <property name="javax.persistence.jdbc.password" value="9XYH7oQaL91RZfQh"/>-->
+<!--            <property name="javax.persistence.jdbc.driver" value="MarineService-1.0-SNAPSHOT.war_org.postgresql.Driver_42_5"/>-->
+<!--            <property name="javax.persistence.jdbc.user" value="s285583"/>-->
             <property name="javax.persistence.schema-generation.database.action"
                       value="create"/>
             <property name="hibernate.jpa.compliance.global_id_generators" value="false"/>

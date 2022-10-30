@@ -35,7 +35,7 @@ public class SpaceMarineCrudResource {
         return Response.ok().build();
     }
 
-    @GET
+    @DELETE
     @Path("/{id}")
     @Produces("text/json")
     public Response deleteSpaceMarine(@PathParam("id") Long id) {

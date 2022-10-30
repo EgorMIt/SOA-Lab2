@@ -1,35 +1,35 @@
 package com.ervelus.marineservice.service.impl;
 
+import com.ervelus.marineservice.converter.SpaceMarineConverter;
 import com.ervelus.marineservice.repository.SpaceMarineSearchRepository;
 import com.ervelus.marineservice.service.SpaceMarineSearchService;
 import ru.egormit.library.*;
-import ru.egormit.library.enums.SortByType;
-import ru.egormit.library.enums.SortOrder;
+import ru.egormit.library.enums.*;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Stateless
 public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
     @Inject
     private SpaceMarineSearchRepository repository;
+    @Inject
+    private SpaceMarineConverter converter;
 
     @Override
     public SpaceMarineSearchResponse findAllSpaceMarineByFilter(SpaceMarineFilterRequest request) {
         HashMap<String, String> fieldToVal = new HashMap<>();
         if (request.getName() != null) fieldToVal.put("name", request.getName());
         if (request.getCoordinates() != null){
-            fieldToVal.put("coordinate_x", request.getCoordinates().getX().toString());
-            fieldToVal.put("coordinate_y", request.getCoordinates().getY().toString());
+            fieldToVal.put("coordinateX", request.getCoordinates().getX().toString());
+            fieldToVal.put("coordinateY", request.getCoordinates().getY().toString());
         }
-        if (request.getCreationDate() != null) fieldToVal.put("creation_date", request.getCreationDate().toString());
+        if (request.getCreationDate() != null) fieldToVal.put("creationDate", request.getCreationDate().toString());
         if (request.getHealth() != null) fieldToVal.put("health", request.getHealth().toString());
-        if (request.getCategory() != null) fieldToVal.put("astartes_category", request.getCategory());
-        if (request.getWeaponType() != null) fieldToVal.put("weapon_type", request.getWeaponType());
-        if (request.getMeleeWeapon() != null) fieldToVal.put("melee_weapon", request.getMeleeWeapon());
+        if (request.getCategory() != null) fieldToVal.put("category", request.getCategory());
+        if (request.getWeaponType() != null) fieldToVal.put("weaponType", request.getWeaponType());
+        if (request.getMeleeWeapon() != null) fieldToVal.put("meleeWeapon", request.getMeleeWeapon());
         List<SpaceMarine> marines;
         if (request.getSortBy() != null) {
             marines = (repository.getAllMatchingFieldsSortedPageable(
@@ -41,17 +41,8 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
         }else marines = repository.getAllMatchingFieldsPageable(fieldToVal, request.getPage(), request.getLimit());
         List<SpaceMarineResponse> responseList = new ArrayList<>();
         for (SpaceMarine marine: marines) {
-            SpaceMarineResponse marineResponse = new SpaceMarineResponse();
-            marineResponse.setId(marine.getId());
-            marineResponse.setName(marine.getName());
-            marineResponse.setCoordinates(Coordinates.of(marine.getCoordinateX(), marine.getCoordinateY()));
-            marineResponse.setHealth(marine.getHealth());
-            marineResponse.setCategory(marine.getCategory());
-            marineResponse.setCreationDate(marine.getCreationDate());
-            marineResponse.setWeaponType(marine.getWeaponType());
-            marineResponse.setMeleeWeapon(marine.getMeleeWeapon());
-            marineResponse.setStarShipId(marine.getStarShip().getId());
-            responseList.add(marineResponse);
+            SpaceMarineResponse response = new SpaceMarineResponse();
+            responseList.add(converter.entityToResponse(marine, response));
         }
         return SpaceMarineSearchResponse.of(responseList);
     }
@@ -61,17 +52,8 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
         List<SpaceMarine> marines = repository.getAllByNamePageable(request.getName(), request.getPage(), request.getLimit());
         List<SpaceMarineResponse> responseList = new ArrayList<>();
         for (SpaceMarine marine: marines) {
-            SpaceMarineResponse marineResponse = new SpaceMarineResponse();
-            marineResponse.setId(marine.getId());
-            marineResponse.setName(marine.getName());
-            marineResponse.setCoordinates(Coordinates.of(marine.getCoordinateX(), marine.getCoordinateY()));
-            marineResponse.setHealth(marine.getHealth());
-            marineResponse.setCategory(marine.getCategory());
-            marineResponse.setCreationDate(marine.getCreationDate());
-            marineResponse.setWeaponType(marine.getWeaponType());
-            marineResponse.setMeleeWeapon(marine.getMeleeWeapon());
-            marineResponse.setStarShipId(marine.getStarShip().getId());
-            responseList.add(marineResponse);
+            SpaceMarineResponse response = new SpaceMarineResponse();
+            responseList.add(converter.entityToResponse(marine, response));
         }
         return SpaceMarineSearchResponse.of(responseList);
     }
@@ -81,17 +63,8 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
         List<SpaceMarine> marines = repository.getAllByHealthGreaterPageable(request.getHealth(), request.getPage(), request.getLimit());
         List<SpaceMarineResponse> responseList = new ArrayList<>();
         for (SpaceMarine marine: marines) {
-            SpaceMarineResponse marineResponse = new SpaceMarineResponse();
-            marineResponse.setId(marine.getId());
-            marineResponse.setName(marine.getName());
-            marineResponse.setCoordinates(Coordinates.of(marine.getCoordinateX(), marine.getCoordinateY()));
-            marineResponse.setHealth(marine.getHealth());
-            marineResponse.setCategory(marine.getCategory());
-            marineResponse.setCreationDate(marine.getCreationDate());
-            marineResponse.setWeaponType(marine.getWeaponType());
-            marineResponse.setMeleeWeapon(marine.getMeleeWeapon());
-            marineResponse.setStarShipId(marine.getStarShip().getId());
-            responseList.add(marineResponse);
+            SpaceMarineResponse response = new SpaceMarineResponse();
+            responseList.add(converter.entityToResponse(marine, response));
         }
         return SpaceMarineSearchResponse.of(responseList);
     }

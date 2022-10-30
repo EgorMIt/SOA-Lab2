@@ -4,7 +4,6 @@ import ru.egormit.library.SpaceMarine;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
@@ -30,7 +29,7 @@ public class SpaceMarineCrudRepository {
         CriteriaQuery<SpaceMarine> criteriaQuery = builder.createQuery(SpaceMarine.class);
         criteriaQuery.select(criteriaQuery.from(SpaceMarine.class));
         return entityManagerProvider.getEntityManager().createQuery(criteriaQuery)
-                .setFirstResult(page*limit)
+                .setFirstResult((page-1)*limit)
                 .setMaxResults(limit)
                 .getResultList();
     }
@@ -40,8 +39,6 @@ public class SpaceMarineCrudRepository {
         CriteriaDelete<SpaceMarine> delete = builder.createCriteriaDelete(SpaceMarine.class);
         Root<SpaceMarine> root = delete.from(SpaceMarine.class);
         delete.where(builder.equal(root.get("id"), id));
-        entityManagerProvider.getEntityManager().getTransaction().begin();
         entityManagerProvider.getEntityManager().createQuery(delete).executeUpdate();
-        entityManagerProvider.getEntityManager().getTransaction().commit();
     }
 }
