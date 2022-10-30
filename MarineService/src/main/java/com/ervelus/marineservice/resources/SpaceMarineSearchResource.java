@@ -10,7 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-@Path("/spacemarine/search")
+@Path("/spacemarines/search")
 public class SpaceMarineSearchResource {
     @Inject
     private SpaceMarineSearchService searchService;
