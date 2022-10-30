@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import ru.egormit.library.SpaceMarineResponse;
+import ru.egormit.library.SpaceMarineUpdateRequest;
 
 /**
  * Запросы к первому сервису.
@@ -31,6 +32,6 @@ public interface FirstService {
      * @param spaceMarineDto новая модель
      */
     @PutMapping(EndpointsFirstService.UPDATE_SPACEMARINE)
-    void updateSpacemarine(@PathVariable Long id, @RequestBody SpaceMarineResponse spaceMarineDto);
+    void updateSpacemarine(@PathVariable Long id, @RequestBody SpaceMarineUpdateRequest spaceMarineDto);
 
 }

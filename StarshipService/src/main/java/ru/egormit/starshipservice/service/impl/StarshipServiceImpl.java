@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import ru.egormit.library.SpaceMarine;
 import ru.egormit.library.SpaceMarineResponse;
+import ru.egormit.library.SpaceMarineUpdateRequest;
 import ru.egormit.library.StarShip;
 import ru.egormit.library.StarShipDto;
 import ru.egormit.library.StarShipRequest;
@@ -68,7 +69,7 @@ public class StarshipServiceImpl implements StarshipService {
     public List<StarShipDto> getAllStarships() {
         return starshipRepository.findAll()
                 .stream()
-                .map(modelMapper::mapToUserDto)
+                .map(modelMapper::map)
                 .collect(Collectors.toList());
     }
 
@@ -83,12 +84,14 @@ public class StarshipServiceImpl implements StarshipService {
         SpaceMarineResponse spaceMarine = firstService.getSpacemarine(spaceMarineId);
         ErrorDescriptions.SPACEMACS_IS_BUSY.throwIfFalse(ObjectUtils.isEmpty(spaceMarine.getStarShipId()));
 
+        SpaceMarineUpdateRequest request = modelMapper.map(spaceMarine);
+
         StarShip starShip = starshipRepository.findById(starShipId)
                 .orElseThrow(ErrorDescriptions.STARSHIP_NOT_FOUND::exception);
 
-        spaceMarine.setStarShipId(starShip.getId());
+        request.setStarShip(modelMapper.map(starShip));
 
-        firstService.updateSpacemarine(spaceMarineId, spaceMarine);
+        firstService.updateSpacemarine(spaceMarineId, request);
     }
 
     /**
@@ -105,8 +108,10 @@ public class StarshipServiceImpl implements StarshipService {
 
         for (SpaceMarine spaceMarine : starShip.getSpaceMarines()) {
             SpaceMarineResponse spaceMarineDto = firstService.getSpacemarine(spaceMarine.getId());
-            spaceMarineDto.setStarShipId(null);
-            firstService.updateSpacemarine(spaceMarineDto.getId(), spaceMarineDto);
+            SpaceMarineUpdateRequest request = modelMapper.map(spaceMarineDto);
+
+            request.setStarShip(null);
+            firstService.updateSpacemarine(spaceMarineDto.getId(), request);
         }
     }
 
