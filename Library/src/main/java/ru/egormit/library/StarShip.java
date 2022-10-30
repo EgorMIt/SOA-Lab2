@@ -1,4 +1,4 @@
-package ru.egormit.secondservice.domain;
+package ru.egormit.library;
 
 import lombok.Getter;
 import lombok.Setter;

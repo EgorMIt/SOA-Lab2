@@ -36,7 +36,7 @@ public class StarshipController {
      * @param request тело запроса.
      */
     @PostMapping(value = Endpoints.CREATE_STARSHIP)
-    public ResponseEntity<Object> getChapter(@RequestBody StarShipRequest request) {
+    public ResponseEntity<Object> getStarship(@RequestBody StarShipRequest request) {
         starshipService.createStarship(request);
         return ResponseEntity.ok().build();
     }
@@ -47,7 +47,7 @@ public class StarshipController {
      * @return список кораблей.
      */
     @GetMapping(value = Endpoints.GET_ALL_STARSHIPS)
-    public ResponseEntity<List<StarShipDto>> deleteChapter() {
+    public ResponseEntity<List<StarShipDto>> getAllStarships() {
         return new ResponseEntity<>(starshipService.getAllStarships(), HttpStatus.OK);
     }
 

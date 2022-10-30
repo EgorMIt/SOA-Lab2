@@ -19,6 +19,6 @@ public class SpaceMarineSearchResponse {
     /**
      * Список найденных космодесантников.
      */
-    List<SpaceMarineSearchResponse> items;
+    List<SpaceMarineResponse> items;
 
 }

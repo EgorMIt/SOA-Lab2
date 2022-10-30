@@ -58,4 +58,9 @@ public class SpaceMarineFilterRequest extends PageDto {
      */
     private String sortBy;
 
+    /**
+     * Порядок сортировки
+     */
+    private String order;
+
 }

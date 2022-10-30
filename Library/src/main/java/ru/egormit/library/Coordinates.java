@@ -17,11 +17,11 @@ public class Coordinates {
     /**
      * Координата X.
      */
-    private Integer coordinateX;
+    private Integer x;
 
     /**
      * Координата Y.
      */
-    private Long coordinateY;
+    private Long y;
 
 }

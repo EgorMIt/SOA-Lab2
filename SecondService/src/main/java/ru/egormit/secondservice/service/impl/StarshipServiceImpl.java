@@ -7,8 +7,8 @@ import org.springframework.util.ObjectUtils;
 import ru.egormit.library.SpaceMarineResponse;
 import ru.egormit.library.StarShipDto;
 import ru.egormit.library.StarShipRequest;
-import ru.egormit.secondservice.domain.SpaceMarine;
-import ru.egormit.secondservice.domain.StarShip;
+import ru.egormit.library.SpaceMarine;
+import ru.egormit.library.StarShip;
 import ru.egormit.secondservice.domain.StarshipRepository;
 import ru.egormit.secondservice.error.ErrorDescriptions;
 import ru.egormit.secondservice.integration.FirstService;
@@ -53,8 +53,8 @@ public class StarshipServiceImpl implements StarshipService {
         StarShip starShip = new StarShip();
         starShip.setName(request.getName());
         starShip.setFleet(request.getFleet());
-        starShip.setCoordinateX(request.getCoordinates().getCoordinateX());
-        starShip.setCoordinateY(request.getCoordinates().getCoordinateY());
+        starShip.setCoordinateX(request.getCoordinates().getX());
+        starShip.setCoordinateY(request.getCoordinates().getY());
 
         starshipRepository.save(starShip);
     }

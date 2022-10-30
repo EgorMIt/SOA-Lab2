@@ -5,11 +5,11 @@ package ru.egormit.library.enums;
  *
  * @author Egor Mitrofanov.
  */
-public enum SortByTypes {
+public enum SortByType {
     name,
     health,
-    creationDate,
+    creation_date,
     category,
-    weaponType,
-    meleeWeapon
+    weapon_type,
+    melee_weapon
 }

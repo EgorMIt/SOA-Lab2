@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.egormit.library.Coordinates;
 import ru.egormit.library.StarShipDto;
-import ru.egormit.secondservice.domain.SpaceMarine;
-import ru.egormit.secondservice.domain.StarShip;
+import ru.egormit.library.SpaceMarine;
+import ru.egormit.library.StarShip;
 
 import java.util.ArrayList;
 import java.util.List;

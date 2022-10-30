@@ -1,6 +1,7 @@
-package ru.egormit.secondservice.domain;
+package ru.egormit.library;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import ru.egormit.library.enums.AstartesCategory;
 import ru.egormit.library.enums.MeleeWeapon;

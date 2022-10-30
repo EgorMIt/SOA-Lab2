@@ -6,7 +6,7 @@ package ru.egormit.library.enums;
  * @author Egor Mitrofanov.
  */
 public enum AstartesCategory {
-    SCOUT,
-    TERMINATOR,
-    LIBRARIAN
+    AGGRESSOR,
+    ASSAULT,
+    HELIX
 }
