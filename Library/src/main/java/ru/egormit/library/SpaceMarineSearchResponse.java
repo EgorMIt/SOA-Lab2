@@ -20,5 +20,6 @@ public class SpaceMarineSearchResponse {
      * Список найденных космодесантников.
      */
     List<SpaceMarineResponse> items;
+    Long pageNumber;
 
 }

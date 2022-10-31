@@ -8,8 +8,8 @@ package ru.egormit.library.enums;
 public enum SortByType {
     name,
     health,
-    creation_date,
+    creationDate,
     category,
-    weapon_type,
-    melee_weapon
+    weaponType,
+    meleeWeapon
 }

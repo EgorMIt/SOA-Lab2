@@ -43,7 +43,7 @@ public class SpaceMarineCrudServiceImpl implements SpaceMarineCrudService {
             SpaceMarineResponse response = new SpaceMarineResponse();
             responseList.add(converter.entityToResponse(marine, response));
         }
-        return SpaceMarineSearchResponse.of(responseList);
+        return SpaceMarineSearchResponse.of(responseList, countPages(pageDto.getLimit()));
     }
 
     @Override
@@ -58,5 +58,9 @@ public class SpaceMarineCrudServiceImpl implements SpaceMarineCrudService {
         SpaceMarine spaceMarine = repository.getById(id);
         if (spaceMarine == null) throw new NotFoundException();
         repository.deleteById(id);
+    }
+
+    private Long countPages(Integer limit) {
+        return Double.valueOf(Math.ceil(repository.countMarines().floatValue() / limit.floatValue())).longValue();
     }
 }

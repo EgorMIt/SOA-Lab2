@@ -38,7 +38,7 @@ public class ModelMapper {
         List<Long> spaceMarines = new ArrayList<>();
         for (SpaceMarine spaceMarine : starShip.getSpaceMarines()) {
             spaceMarines.add(spaceMarine.getId());
-            //health += spaceMarine.getHealth();
+            health += spaceMarine.getHealth();
             marinesCount++;
         }
         dto.setHealth(health);
@@ -57,7 +57,7 @@ public class ModelMapper {
         request.setWeaponType(response.getWeaponType());
         request.setMeleeWeapon(response.getMeleeWeapon());
         request.setCreationDate(response.getCreationDate());
-        request.setHealth(request.getHealth());
+        request.setHealth(response.getHealth());
         return request;
     }
 

@@ -34,6 +34,13 @@ public class SpaceMarineCrudRepository {
                 .getResultList();
     }
 
+    public Long countMarines() {
+        CriteriaBuilder builder = entityManagerProvider.getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Long> criteriaQuery = builder.createQuery(Long.class);
+        criteriaQuery.select(builder.count(criteriaQuery.from(SpaceMarine.class)));
+        return entityManagerProvider.getEntityManager().createQuery(criteriaQuery).getSingleResult();
+    }
+
     public void deleteById(Long id) {
         CriteriaBuilder builder = entityManagerProvider.getEntityManager().getCriteriaBuilder();
         CriteriaDelete<SpaceMarine> delete = builder.createCriteriaDelete(SpaceMarine.class);

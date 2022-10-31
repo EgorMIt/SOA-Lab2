@@ -47,7 +47,7 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
             SpaceMarineResponse response = new SpaceMarineResponse();
             responseList.add(converter.entityToResponse(marine, response));
         }
-        return SpaceMarineSearchResponse.of(responseList);
+        return SpaceMarineSearchResponse.of(responseList, countPages(responseList.size(), request.getPage(), request.getLimit()));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
             SpaceMarineResponse response = new SpaceMarineResponse();
             responseList.add(converter.entityToResponse(marine, response));
         }
-        return SpaceMarineSearchResponse.of(responseList);
+        return SpaceMarineSearchResponse.of(responseList, countPages(responseList.size(), request.getPage(), request.getLimit()));
     }
 
     @Override
@@ -69,6 +69,12 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
             SpaceMarineResponse response = new SpaceMarineResponse();
             responseList.add(converter.entityToResponse(marine, response));
         }
-        return SpaceMarineSearchResponse.of(responseList);
+        return SpaceMarineSearchResponse.of(responseList, countPages(responseList.size(), request.getPage(), request.getLimit()));
+    }
+
+    private Long countPages(Integer size, Integer page, Integer limit){
+        if (size < limit)
+            return Long.valueOf(page);
+        else return (long) (page + 1);
     }
 }

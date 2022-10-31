@@ -4,8 +4,8 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/studs
-    username: s285583
-    password: 9XYH7oQaL91RZfQh
+    username:
+    password:
   jpa:
     hibernate:
       ddl-auto: update
@@ -28,4 +28,4 @@ feign:
 service:
   first-service:
     timeout: 30000
-    url: http://localhost:10356
+    url: https://localhost:11256

@@ -38,7 +38,7 @@ public class SpaceMarineCrudResource {
 
     @DELETE
     @Path("/{id}")
-    @Produces("text/json")
+    @Produces("application/json")
     public Response deleteSpaceMarine(@PathParam("id") Long id) {
         crudService.deleteSpaceMarine(id);
         return Response.ok().build();
@@ -46,7 +46,7 @@ public class SpaceMarineCrudResource {
 
     @PUT
     @Path("/{id}")
-    @Produces("text/json")
+    @Produces("application/json")
     public Response updateSpaceMarine(@PathParam("id") Long id, SpaceMarineUpdateRequest request) {
         crudService.updateSpaceMarine(id, request);
         return Response.ok().build();
