@@ -28,4 +28,4 @@ feign:
 service:
   first-service:
     timeout: 30000
-    url: http://localhost:11256
+    url: http://localhost:10356

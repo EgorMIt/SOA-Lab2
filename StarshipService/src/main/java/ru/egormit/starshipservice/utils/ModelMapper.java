@@ -38,7 +38,7 @@ public class ModelMapper {
         List<Long> spaceMarines = new ArrayList<>();
         for (SpaceMarine spaceMarine : starShip.getSpaceMarines()) {
             spaceMarines.add(spaceMarine.getId());
-            health += spaceMarine.getHealth();
+            //health += spaceMarine.getHealth();
             marinesCount++;
         }
         dto.setHealth(health);
