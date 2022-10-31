@@ -24,13 +24,8 @@ feign:
   okhttp:
     enabled: true
 
-
-#Параметры запуска второго сервиса
-server:
-  port: 8081
-
 #Параметры первого сервиса
 service:
   first-service:
     timeout: 30000
-    url: http://localhost:8080
+    url: http://localhost:11256

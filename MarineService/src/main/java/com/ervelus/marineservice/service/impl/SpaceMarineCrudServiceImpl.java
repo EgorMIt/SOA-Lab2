@@ -3,18 +3,12 @@ package com.ervelus.marineservice.service.impl;
 import com.ervelus.marineservice.converter.SpaceMarineConverter;
 import com.ervelus.marineservice.repository.SpaceMarineCrudRepository;
 import com.ervelus.marineservice.service.SpaceMarineCrudService;
-import ru.egormit.library.Coordinates;
-import ru.egormit.library.PageDto;
-import ru.egormit.library.SpaceMarine;
-import ru.egormit.library.SpaceMarineCreateRequest;
-import ru.egormit.library.SpaceMarineResponse;
-import ru.egormit.library.SpaceMarineSearchResponse;
+import ru.egormit.library.*;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.NotFoundException;
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +29,7 @@ public class SpaceMarineCrudServiceImpl implements SpaceMarineCrudService {
     }
 
     @Override
-    public void updateSpaceMarine(Long id, SpaceMarineResponse request) {
+    public void updateSpaceMarine(Long id, SpaceMarineUpdateRequest request) {
         SpaceMarine spaceMarine = repository.getById(id);
         if (spaceMarine == null) throw new NotFoundException();
         repository.save(converter.updateRequestToEntity(request, spaceMarine));

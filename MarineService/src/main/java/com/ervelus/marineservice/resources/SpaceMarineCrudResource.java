@@ -3,7 +3,7 @@ package com.ervelus.marineservice.resources;
 import com.ervelus.marineservice.service.SpaceMarineCrudService;
 import ru.egormit.library.PageDto;
 import ru.egormit.library.SpaceMarineCreateRequest;
-import ru.egormit.library.SpaceMarineResponse;
+import ru.egormit.library.SpaceMarineUpdateRequest;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -47,7 +47,7 @@ public class SpaceMarineCrudResource {
     @PUT
     @Path("/{id}")
     @Produces("text/json")
-    public Response updateSpaceMarine(@PathParam("id") Long id, SpaceMarineResponse request) {
+    public Response updateSpaceMarine(@PathParam("id") Long id, SpaceMarineUpdateRequest request) {
         crudService.updateSpaceMarine(id, request);
         return Response.ok().build();
     }

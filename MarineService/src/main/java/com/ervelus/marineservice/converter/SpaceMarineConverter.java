@@ -1,9 +1,6 @@
 package com.ervelus.marineservice.converter;
 
-import ru.egormit.library.Coordinates;
-import ru.egormit.library.SpaceMarine;
-import ru.egormit.library.SpaceMarineCreateRequest;
-import ru.egormit.library.SpaceMarineResponse;
+import ru.egormit.library.*;
 
 import javax.ejb.Stateless;
 
@@ -34,7 +31,7 @@ public class SpaceMarineConverter {
         return spaceMarine;
     }
 
-    public SpaceMarine updateRequestToEntity(SpaceMarineResponse request, SpaceMarine spaceMarine){
+    public SpaceMarine updateRequestToEntity(SpaceMarineUpdateRequest request, SpaceMarine spaceMarine){
         spaceMarine.setName(request.getName());
         spaceMarine.setCoordinateX(request.getCoordinates().getX());
         spaceMarine.setCoordinateY(request.getCoordinates().getY());
@@ -42,7 +39,19 @@ public class SpaceMarineConverter {
         spaceMarine.setCategory(request.getCategory());
         spaceMarine.setWeaponType(request.getWeaponType());
         spaceMarine.setMeleeWeapon(request.getMeleeWeapon());
-        //spaceMarine.setStarShip(request.getStarShipId());
+        if (request.getStarShip() != null)
+            spaceMarine.setStarShip(starShipEntityFromDto(request.getStarShip()));
+        else spaceMarine.setStarShip(null);
         return spaceMarine;
+    }
+
+    public StarShip starShipEntityFromDto(StarShipDto dto){
+        StarShip starShip = new StarShip();
+        starShip.setId(dto.getId());
+        starShip.setCoordinateX(dto.getCoordinates().getX());
+        starShip.setCoordinateY(dto.getCoordinates().getY());
+        starShip.setFleet(dto.getFleet());
+        starShip.setName(dto.getName());
+        return starShip;
     }
 }

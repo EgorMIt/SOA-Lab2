@@ -1,9 +1,6 @@
 package com.ervelus.marineservice.service;
 
-import ru.egormit.library.PageDto;
-import ru.egormit.library.SpaceMarineCreateRequest;
-import ru.egormit.library.SpaceMarineResponse;
-import ru.egormit.library.SpaceMarineSearchResponse;
+import ru.egormit.library.*;
 
 import javax.ejb.Local;
 
@@ -11,7 +8,7 @@ import javax.ejb.Local;
 public interface SpaceMarineCrudService {
     void createSpaceMarine(SpaceMarineCreateRequest request);
 
-    void updateSpaceMarine(Long id, SpaceMarineResponse request);
+    void updateSpaceMarine(Long id, SpaceMarineUpdateRequest request);
 
     SpaceMarineSearchResponse getAllSpaceMarines(PageDto pageDto);
 
