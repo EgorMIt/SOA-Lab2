@@ -1,11 +1,11 @@
 package ru.ervelus.marineservice.service.impl;
 
-import ru.ervelus.marineservice.repository.SpaceMarineRepository;
-import ru.ervelus.marineservice.service.SpaceMarineGroupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.egormit.library.MeleeWeaponGroupResponse;
 import ru.egormit.library.enums.MeleeWeapon;
+import ru.ervelus.marineservice.repository.SpaceMarineRepository;
+import ru.ervelus.marineservice.service.SpaceMarineGroupService;
 
 import java.util.Map;
 

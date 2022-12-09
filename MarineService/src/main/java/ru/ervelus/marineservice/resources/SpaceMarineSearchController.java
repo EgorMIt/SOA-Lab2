@@ -1,6 +1,5 @@
 package ru.ervelus.marineservice.resources;
 
-import ru.ervelus.marineservice.service.SpaceMarineSearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.egormit.library.SpaceMarineFilterRequest;
 import ru.egormit.library.SpaceMarineSearchResponse;
+import ru.ervelus.marineservice.service.SpaceMarineSearchService;
 
 @RestController
-@RequestMapping( value = "/spacemarines/search", produces = "application/json")
+@RequestMapping(value = "/spacemarines/search", produces = "application/json")
 @RequiredArgsConstructor
 public class SpaceMarineSearchController extends BaseController {
     private final SpaceMarineSearchService searchService;

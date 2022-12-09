@@ -1,17 +1,20 @@
 package ru.ervelus.marineservice.service.impl;
 
-import ru.ervelus.marineservice.converter.SpaceMarineConverter;
-import ru.ervelus.marineservice.repository.SpaceMarineRepository;
-import ru.ervelus.marineservice.service.SpaceMarineSearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.egormit.library.SpaceMarine;
 import ru.egormit.library.SpaceMarineFilterRequest;
 import ru.egormit.library.SpaceMarineResponse;
 import ru.egormit.library.SpaceMarineSearchResponse;
-import ru.egormit.library.enums.*;
+import ru.egormit.library.enums.SortByType;
+import ru.egormit.library.enums.SortOrder;
+import ru.ervelus.marineservice.converter.SpaceMarineConverter;
+import ru.ervelus.marineservice.repository.SpaceMarineRepository;
+import ru.ervelus.marineservice.service.SpaceMarineSearchService;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -71,7 +74,7 @@ public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
         return SpaceMarineSearchResponse.of(responseList, countPages(responseList.size(), request.getPage(), request.getLimit()));
     }
 
-    private Long countPages(Integer size, Integer page, Integer limit){
+    private Long countPages(Integer size, Integer page, Integer limit) {
         if (size < limit)
             return Long.valueOf(page);
         else return (long) (page + 1);

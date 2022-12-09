@@ -1,0 +1,63 @@
+version: "2.1"
+services:
+  marine-service-1:
+    image: egormit/marine-service
+    container_name: marine-service-1
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=soa-db
+      - DATABASE_PORT=5432
+      - DATABASE_USERNAME=admin
+      - DATABASE_PASSWORD=admin
+    networks:
+      default:
+        ipv4_address: 172.20.1.1
+    ports:
+      - "8000:8000"
+
+  marine-service-2:
+    image: egormit/marine-service
+    container_name: marine-service-2
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=soa-db
+      - DATABASE_PORT=5432
+      - DATABASE_USERNAME=admin
+      - DATABASE_PASSWORD=admin
+    networks:
+      default:
+        ipv4_address: 172.20.1.2
+    ports:
+      - "9000:8000"
+
+  db:
+    image: postgres
+    container_name: soa-db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=soa-db
+    command: postgres -p 5432
+    ports:
+      - "5432:5432"
+
+  haproxy:
+    image: "haproxy:2.2-alpine"
+    container_name: haproxy
+    depends_on:
+      - marine-service-1
+      - marine-service-2
+    ports:
+      - "10000:10000"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+
+networks:
+  default:
+    external:
+      name: develop
+
+# Перед запуском создать сеть:
+# docker network create develop --subnet=172.20.0.0/16

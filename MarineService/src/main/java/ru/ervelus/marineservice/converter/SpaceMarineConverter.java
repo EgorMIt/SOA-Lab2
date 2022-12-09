@@ -1,11 +1,17 @@
 package ru.ervelus.marineservice.converter;
 
 import org.springframework.stereotype.Service;
-import ru.egormit.library.*;
+import ru.egormit.library.Coordinates;
+import ru.egormit.library.SpaceMarine;
+import ru.egormit.library.SpaceMarineCreateRequest;
+import ru.egormit.library.SpaceMarineResponse;
+import ru.egormit.library.SpaceMarineUpdateRequest;
+import ru.egormit.library.StarShip;
+import ru.egormit.library.StarShipDto;
 
 @Service
 public class SpaceMarineConverter {
-    public SpaceMarineResponse entityToResponse(SpaceMarine spaceMarine, SpaceMarineResponse response){
+    public SpaceMarineResponse entityToResponse(SpaceMarine spaceMarine, SpaceMarineResponse response) {
         response.setId(spaceMarine.getId());
         response.setName(spaceMarine.getName());
         response.setCoordinates(Coordinates.of(spaceMarine.getCoordinateX(), spaceMarine.getCoordinateY()));
@@ -19,7 +25,7 @@ public class SpaceMarineConverter {
         return response;
     }
 
-    public SpaceMarine createRequestToEntity(SpaceMarineCreateRequest request, SpaceMarine spaceMarine){
+    public SpaceMarine createRequestToEntity(SpaceMarineCreateRequest request, SpaceMarine spaceMarine) {
         spaceMarine.setName(request.getName());
         spaceMarine.setCoordinateX(request.getCoordinates().getX());
         spaceMarine.setCoordinateY(request.getCoordinates().getY());
@@ -30,7 +36,7 @@ public class SpaceMarineConverter {
         return spaceMarine;
     }
 
-    public SpaceMarine updateRequestToEntity(SpaceMarineUpdateRequest request, SpaceMarine spaceMarine){
+    public SpaceMarine updateRequestToEntity(SpaceMarineUpdateRequest request, SpaceMarine spaceMarine) {
         spaceMarine.setName(request.getName());
         spaceMarine.setCoordinateX(request.getCoordinates().getX());
         spaceMarine.setCoordinateY(request.getCoordinates().getY());
@@ -44,7 +50,7 @@ public class SpaceMarineConverter {
         return spaceMarine;
     }
 
-    public StarShip starShipEntityFromDto(StarShipDto dto){
+    public StarShip starShipEntityFromDto(StarShipDto dto) {
         StarShip starShip = new StarShip();
         starShip.setId(dto.getId());
         starShip.setCoordinateX(dto.getCoordinates().getX());

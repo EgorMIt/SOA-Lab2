@@ -3,12 +3,12 @@ spring:
     name: SOA-Lab2-Service2
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/studs
-    username:
-    password:
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/soa-db
+    username: ${DATABASE_USERNAME:admin}
+    password: ${DATABASE_PASSWORD:admin}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     database: POSTGRESQL
   sql:
     init:
@@ -16,3 +16,6 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+
+server:
+  port: 8000

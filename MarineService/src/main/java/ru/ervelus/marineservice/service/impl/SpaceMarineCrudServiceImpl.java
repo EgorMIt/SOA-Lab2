@@ -1,11 +1,16 @@
 package ru.ervelus.marineservice.service.impl;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import ru.egormit.library.PageDto;
+import ru.egormit.library.SpaceMarine;
+import ru.egormit.library.SpaceMarineCreateRequest;
+import ru.egormit.library.SpaceMarineResponse;
+import ru.egormit.library.SpaceMarineSearchResponse;
+import ru.egormit.library.SpaceMarineUpdateRequest;
 import ru.ervelus.marineservice.converter.SpaceMarineConverter;
 import ru.ervelus.marineservice.repository.SpaceMarineRepository;
 import ru.ervelus.marineservice.service.SpaceMarineCrudService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import ru.egormit.library.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalTime;
@@ -23,7 +28,7 @@ public class SpaceMarineCrudServiceImpl implements SpaceMarineCrudService {
     public void createSpaceMarine(SpaceMarineCreateRequest request) {
         SpaceMarine spaceMarine = new SpaceMarine();
         ZonedDateTime time = ZonedDateTime.now();
-        spaceMarine.setCreationDate(time.with(LocalTime.of(0,0,0,0)));
+        spaceMarine.setCreationDate(time.with(LocalTime.of(0, 0, 0, 0)));
         repository.save(converter.createRequestToEntity(request, spaceMarine));
     }
 

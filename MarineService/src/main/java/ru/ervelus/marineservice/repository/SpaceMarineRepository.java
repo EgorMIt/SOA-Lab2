@@ -3,11 +3,18 @@ package ru.ervelus.marineservice.repository;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.egormit.library.SpaceMarine;
-import ru.egormit.library.enums.*;
+import ru.egormit.library.enums.AstartesCategory;
+import ru.egormit.library.enums.MeleeWeapon;
+import ru.egormit.library.enums.SortByType;
+import ru.egormit.library.enums.SortOrder;
+import ru.egormit.library.enums.Weapon;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Tuple;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,7 +66,7 @@ public class SpaceMarineRepository extends SimpleJpaRepository<SpaceMarine, Long
         } else query.orderBy(builder.desc(root.get(type.name())));
         query.where(preparePredicatesFromFilter(builder, fieldToVal, root));
         return entityManager.createQuery(query)
-                .setFirstResult((page -1)* limit)
+                .setFirstResult((page - 1) * limit)
                 .setMaxResults(limit)
                 .getResultList();
     }
@@ -71,7 +78,7 @@ public class SpaceMarineRepository extends SimpleJpaRepository<SpaceMarine, Long
         query.select(root);
         query.where(preparePredicatesFromFilter(builder, fieldToVal, root));
         return entityManager.createQuery(query)
-                .setFirstResult((page -1)* limit)
+                .setFirstResult((page - 1) * limit)
                 .setMaxResults(limit)
                 .getResultList();
     }
@@ -82,7 +89,7 @@ public class SpaceMarineRepository extends SimpleJpaRepository<SpaceMarine, Long
         Root<SpaceMarine> root = query.from(SpaceMarine.class);
         query.where(builder.like(root.get("name"), "%" + name + "%"));
         return entityManager.createQuery(query)
-                .setFirstResult((page -1)* limit)
+                .setFirstResult((page - 1) * limit)
                 .setMaxResults(limit)
                 .getResultList();
     }
@@ -98,9 +105,9 @@ public class SpaceMarineRepository extends SimpleJpaRepository<SpaceMarine, Long
                 .getResultList();
     }
 
-    private Predicate[] preparePredicatesFromFilter(CriteriaBuilder builder, Map<String, String> fieldToVal, Root<SpaceMarine> root){
+    private Predicate[] preparePredicatesFromFilter(CriteriaBuilder builder, Map<String, String> fieldToVal, Root<SpaceMarine> root) {
         List<Predicate> pridicates = new ArrayList<>();
-        for (Map.Entry<String, String> entry: fieldToVal.entrySet()) {
+        for (Map.Entry<String, String> entry : fieldToVal.entrySet()) {
             switch (entry.getKey()) {
                 case "creationDate": {
                     pridicates.add(builder.equal(root.get(entry.getKey()), ZonedDateTime.parse(entry.getValue())));

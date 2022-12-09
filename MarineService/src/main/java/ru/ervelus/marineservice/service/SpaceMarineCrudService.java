@@ -1,6 +1,10 @@
 package ru.ervelus.marineservice.service;
 
-import ru.egormit.library.*;
+import ru.egormit.library.PageDto;
+import ru.egormit.library.SpaceMarineCreateRequest;
+import ru.egormit.library.SpaceMarineResponse;
+import ru.egormit.library.SpaceMarineSearchResponse;
+import ru.egormit.library.SpaceMarineUpdateRequest;
 
 public interface SpaceMarineCrudService {
     void createSpaceMarine(SpaceMarineCreateRequest request);

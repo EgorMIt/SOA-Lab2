@@ -1,3 +1,4 @@
 # Project exclude paths
 /Library/target/
 /.idea/
+/MarineService/target/

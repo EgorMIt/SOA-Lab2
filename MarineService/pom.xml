@@ -25,7 +25,7 @@
             <artifactId>Library</artifactId>
             <groupId>ru.egormit</groupId>
             <version>${project.version}</version>
-            <!-- Вообще сюда можно воткнуть просто 1.0-SNAPSHOT, но так почему то не работает 0_о -->
+            <!-- Вообще сюда можно воткнуть просто 1.0-SNAPSHOT, но так почему-то не работает 0_о -->
         </dependency>
 
         <dependency>
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.5.0</version>
+            <version>42.5.1</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
