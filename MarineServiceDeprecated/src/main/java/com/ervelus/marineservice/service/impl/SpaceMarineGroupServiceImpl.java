@@ -1,18 +1,19 @@
 package com.ervelus.marineservice.service.impl;
 
-import com.ervelus.marineservice.repository.SpaceMarineRepository;
+import com.ervelus.marineservice.repository.SpaceMarineGroupRepository;
 import com.ervelus.marineservice.service.SpaceMarineGroupService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import ru.egormit.library.MeleeWeaponGroupResponse;
 import ru.egormit.library.enums.MeleeWeapon;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.Map;
 
-@Service
-@RequiredArgsConstructor
+@Stateless
 public class SpaceMarineGroupServiceImpl implements SpaceMarineGroupService {
-    private final SpaceMarineRepository repository;
+
+    @Inject
+    private SpaceMarineGroupRepository repository;
 
     @Override
     public MeleeWeaponGroupResponse groupSpaceMarinesByMeleeWeaponAndCount() {

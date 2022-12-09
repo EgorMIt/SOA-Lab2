@@ -1,23 +1,24 @@
 package com.ervelus.marineservice.service.impl;
 
 import com.ervelus.marineservice.converter.SpaceMarineConverter;
-import com.ervelus.marineservice.repository.SpaceMarineRepository;
+import com.ervelus.marineservice.repository.SpaceMarineCrudRepository;
 import com.ervelus.marineservice.service.SpaceMarineCrudService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import ru.egormit.library.*;
 
-import javax.persistence.EntityNotFoundException;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.ws.rs.NotFoundException;
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-@RequiredArgsConstructor
+@Stateless
 public class SpaceMarineCrudServiceImpl implements SpaceMarineCrudService {
-    private final SpaceMarineRepository repository;
-    private final SpaceMarineConverter converter;
+    @Inject
+    private SpaceMarineCrudRepository repository;
+    @Inject
+    private SpaceMarineConverter converter;
 
     @Override
     public void createSpaceMarine(SpaceMarineCreateRequest request) {
@@ -29,7 +30,8 @@ public class SpaceMarineCrudServiceImpl implements SpaceMarineCrudService {
 
     @Override
     public void updateSpaceMarine(Long id, SpaceMarineUpdateRequest request) {
-        SpaceMarine spaceMarine = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+        SpaceMarine spaceMarine = repository.getById(id);
+        if (spaceMarine == null) throw new NotFoundException();
         repository.save(converter.updateRequestToEntity(request, spaceMarine));
     }
 
@@ -46,17 +48,19 @@ public class SpaceMarineCrudServiceImpl implements SpaceMarineCrudService {
 
     @Override
     public SpaceMarineResponse getSpaceMarineById(Long id) {
-        SpaceMarine spaceMarine = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+        SpaceMarine spaceMarine = repository.getById(id);
         SpaceMarineResponse response = new SpaceMarineResponse();
         return converter.entityToResponse(spaceMarine, response);
     }
 
     @Override
     public void deleteSpaceMarine(Long id) {
+        SpaceMarine spaceMarine = repository.getById(id);
+        if (spaceMarine == null) throw new NotFoundException();
         repository.deleteById(id);
     }
 
     private Long countPages(Integer limit) {
-        return Double.valueOf(Math.ceil((double) repository.count() / limit.floatValue())).longValue();
+        return Double.valueOf(Math.ceil(repository.countMarines().floatValue() / limit.floatValue())).longValue();
     }
 }

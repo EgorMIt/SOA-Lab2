@@ -1,23 +1,24 @@
 package com.ervelus.marineservice.service.impl;
 
 import com.ervelus.marineservice.converter.SpaceMarineConverter;
-import com.ervelus.marineservice.repository.SpaceMarineRepository;
+import com.ervelus.marineservice.repository.SpaceMarineSearchRepository;
 import com.ervelus.marineservice.service.SpaceMarineSearchService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import ru.egormit.library.SpaceMarine;
 import ru.egormit.library.SpaceMarineFilterRequest;
 import ru.egormit.library.SpaceMarineResponse;
 import ru.egormit.library.SpaceMarineSearchResponse;
 import ru.egormit.library.enums.*;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.*;
 
-@Service
-@RequiredArgsConstructor
+@Stateless
 public class SpaceMarineSearchServiceImpl implements SpaceMarineSearchService {
-    private final SpaceMarineRepository repository;
-    private final SpaceMarineConverter converter;
+    @Inject
+    private SpaceMarineSearchRepository repository;
+    @Inject
+    private SpaceMarineConverter converter;
 
     @Override
     public SpaceMarineSearchResponse findAllSpaceMarineByFilter(SpaceMarineFilterRequest request) {
