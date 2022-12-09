@@ -1,4 +1,4 @@
-package com.ervelus.marineservice.repository;
+package ru.ervelus.marineservice.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

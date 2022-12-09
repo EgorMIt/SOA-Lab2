@@ -1,4 +1,4 @@
-package com.ervelus.marineservice.service;
+package ru.ervelus.marineservice.service;
 
 import ru.egormit.library.MeleeWeaponGroupResponse;
 

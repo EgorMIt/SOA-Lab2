@@ -1,4 +1,4 @@
-package com.ervelus.marineservice.service;
+package ru.ervelus.marineservice.service;
 
 import ru.egormit.library.SpaceMarineFilterRequest;
 import ru.egormit.library.SpaceMarineSearchResponse;

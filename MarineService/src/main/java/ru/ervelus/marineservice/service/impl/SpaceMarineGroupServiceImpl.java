@@ -1,7 +1,7 @@
-package com.ervelus.marineservice.service.impl;
+package ru.ervelus.marineservice.service.impl;
 
-import com.ervelus.marineservice.repository.SpaceMarineRepository;
-import com.ervelus.marineservice.service.SpaceMarineGroupService;
+import ru.ervelus.marineservice.repository.SpaceMarineRepository;
+import ru.ervelus.marineservice.service.SpaceMarineGroupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.egormit.library.MeleeWeaponGroupResponse;

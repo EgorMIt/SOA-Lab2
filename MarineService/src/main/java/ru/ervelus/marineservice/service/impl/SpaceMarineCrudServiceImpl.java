@@ -1,8 +1,8 @@
-package com.ervelus.marineservice.service.impl;
+package ru.ervelus.marineservice.service.impl;
 
-import com.ervelus.marineservice.converter.SpaceMarineConverter;
-import com.ervelus.marineservice.repository.SpaceMarineRepository;
-import com.ervelus.marineservice.service.SpaceMarineCrudService;
+import ru.ervelus.marineservice.converter.SpaceMarineConverter;
+import ru.ervelus.marineservice.repository.SpaceMarineRepository;
+import ru.ervelus.marineservice.service.SpaceMarineCrudService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.egormit.library.*;

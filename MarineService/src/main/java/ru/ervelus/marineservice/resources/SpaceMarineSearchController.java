@@ -1,6 +1,6 @@
-package com.ervelus.marineservice.resources;
+package ru.ervelus.marineservice.resources;
 
-import com.ervelus.marineservice.service.SpaceMarineSearchService;
+import ru.ervelus.marineservice.service.SpaceMarineSearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

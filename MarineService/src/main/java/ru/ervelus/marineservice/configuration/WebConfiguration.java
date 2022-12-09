@@ -1,5 +1,4 @@
-package com.ervelus.marineservice.configuration;
-import org.springframework.context.annotation.*;
+package ru.ervelus.marineservice.configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 

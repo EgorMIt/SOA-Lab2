@@ -1,4 +1,4 @@
-package com.ervelus.marineservice.resources;
+package ru.ervelus.marineservice.resources;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;

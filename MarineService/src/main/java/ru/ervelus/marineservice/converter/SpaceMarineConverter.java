@@ -1,4 +1,4 @@
-package com.ervelus.marineservice.converter;
+package ru.ervelus.marineservice.converter;
 
 import org.springframework.stereotype.Service;
 import ru.egormit.library.*;
