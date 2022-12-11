@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 @Stateless
 @Pool(value = "starshipServicePool")
 public class StarshipServiceImpl implements StarshipService {
-    private static final String MARINES_URL = "http://localhost:8080/spacemarines";
+    private static final String MARINES_URL = "http://haproxy:10000/spacemarines";
 
     /**
      * {@link StarshipRepository}.

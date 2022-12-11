@@ -73,7 +73,7 @@ public class StarshipController {
 
     private StarshipService getService() {
         return JndiUtils.getFromContext(StarshipService.class,
-                "ejb:/logic-1.0-SNAPSHOT/StarshipServiceImpl!ru.egormit.starship.logic.service.StarshipService");
+                "ejb:/logic-1.0-SNAPSHOT-jar-with-dependencies/StarshipServiceImpl!ru.egormit.starship.logic.service.StarshipService");
     }
 
 }
